@@ -12,6 +12,10 @@
 				height: 600px;
 				background-color: grey;
 			}
+			#bingMap{
+				width: 100%;
+				height: 600px;
+			}
 		</style>
 		<title>Interactive Map</title>
 		<meta charset="utf-8" />
@@ -27,7 +31,7 @@
 				<!-- Header -->
 					<header id="header">
 						<h1>Carey Sorge-Toomey</h1>
-						<p>Google Map</p>
+						<p>Interactive Maps</p>
 					</header>
 
 				<!-- Main -->
@@ -35,42 +39,272 @@
 
 						<!-- Content -->
 							<section id="content" class="main">
-								<h2>Map</h2>
+								<h2>Google Map</h2>
 								<div id="map"></div>
 								<script>
   									function initMap() {
-  										var tacoma = {lat: 47.2529, lng: -122.4443};
+  										var tacoma = {lat: 47.2466, lng: -122.4387};
   										var map = new google.maps.Map(document.getElementById('map'), {
     										zoom: 12,
-   											center: tacoma
+   											center: tacoma,
+   											styles: [
+											  {
+											    "elementType": "geometry",
+											    "stylers": [
+											      {
+											        "color": "#212121"
+											      }
+											    ]
+											  },
+											  {
+											    "elementType": "labels.icon",
+											    "stylers": [
+											      {
+											        "visibility": "off"
+											      }
+											    ]
+											  },
+											  {
+											    "elementType": "labels.text.fill",
+											    "stylers": [
+											      {
+											        "color": "#757575"
+											      }
+											    ]
+											  },
+											  {
+											    "elementType": "labels.text.stroke",
+											    "stylers": [
+											      {
+											        "color": "#212121"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "administrative",
+											    "elementType": "geometry",
+											    "stylers": [
+											      {
+											        "color": "#757575"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "administrative.country",
+											    "elementType": "labels.text.fill",
+											    "stylers": [
+											      {
+											        "color": "#9e9e9e"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "administrative.land_parcel",
+											    "stylers": [
+											      {
+											        "visibility": "off"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "administrative.land_parcel",
+											    "elementType": "labels",
+											    "stylers": [
+											      {
+											        "visibility": "off"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "administrative.locality",
+											    "elementType": "labels.text.fill",
+											    "stylers": [
+											      {
+											        "color": "#bdbdbd"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "poi",
+											    "elementType": "labels.text",
+											    "stylers": [
+											      {
+											        "visibility": "off"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "poi",
+											    "elementType": "labels.text.fill",
+											    "stylers": [
+											      {
+											        "color": "#757575"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "poi.park",
+											    "elementType": "geometry",
+											    "stylers": [
+											      {
+											        "color": "#181818"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "poi.park",
+											    "elementType": "labels.text.fill",
+											    "stylers": [
+											      {
+											        "color": "#616161"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "poi.park",
+											    "elementType": "labels.text.stroke",
+											    "stylers": [
+											      {
+											        "color": "#1b1b1b"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "road",
+											    "elementType": "geometry.fill",
+											    "stylers": [
+											      {
+											        "color": "#2c2c2c"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "road",
+											    "elementType": "labels.text.fill",
+											    "stylers": [
+											      {
+											        "color": "#8a8a8a"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "road.arterial",
+											    "elementType": "geometry",
+											    "stylers": [
+											      {
+											        "color": "#373737"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "road.highway",
+											    "elementType": "geometry",
+											    "stylers": [
+											      {
+											        "color": "#3c3c3c"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "road.highway.controlled_access",
+											    "elementType": "geometry",
+											    "stylers": [
+											      {
+											        "color": "#4e4e4e"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "road.local",
+											    "elementType": "labels",
+											    "stylers": [
+											      {
+											        "visibility": "off"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "road.local",
+											    "elementType": "labels.text.fill",
+											    "stylers": [
+											      {
+											        "color": "#616161"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "transit",
+											    "elementType": "labels.text.fill",
+											    "stylers": [
+											      {
+											        "color": "#757575"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "water",
+											    "elementType": "geometry",
+											    "stylers": [
+											      {
+											        "color": "#000000"
+											      }
+											    ]
+											  },
+											  {
+											    "featureType": "water",
+											    "elementType": "labels.text.fill",
+											    "stylers": [
+											      {
+											        "color": "#3d3d3d"
+											      }
+											    ]
+											  }
+											]
   										});
   										var marker = new google.maps.Marker({
   											position: tacoma,
-  											map: map
+  											map: map,
+  											label: {
+  												color: 'Blue', 
+  												text: 'Pinkerton Building',
+  												fontSize: '16px',
+  												fontWeight: '900',
+  											}
   										});
   									}
 								</script>
 								<script async defer
  									 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcG__45ecClcWMV25z138itNL6wLT1_SI&callback=initMap">
 								</script>
+								<br>
+
+								<h2>Bing Map</h2>
+								<div id='bingMap'></div>
+						        <script>
+									var map;
+									function initBingMap() {
+									    map = new Microsoft.Maps.Map(document.getElementById('bingMap'), {
+									    	zoom: 12,
+									    	disableScrollWheelZoom: true,
+									    });
+									}
+								</script>
+								<script async defer
+								src='https://www.bing.com/api/maps/mapcontrol?key=Aqveh1QoSwDCmbpGvHIlKH_BXfoRTd7ADg0o4v_QIPhQJQJQ86T8qtycy8IpIdJ-&callback=initBingMap'>
+						        </script>
+						        <br> <br>
+
+								<ul class="actions special">
+										<li><a href="index.html" target="-blank" class="button">Back to Home</a></li>
+									</ul>
 							</section>
 
 					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
-							<ul class="icons">
-								<br>
-								<li><a href="#" class="icon fa-twitter alt"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon fa-facebook alt"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon fa-instagram alt"><span class="label">Instagram</span></a></li>
-								<li><a href="#" class="icon fa-github alt"><span class="label">GitHub</span></a></li>
-								<li><a href="#" class="icon fa-dribbble alt"><span class="label">Dribbble</span></a></li>
-							</ul>
-						</section>
 						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 					</footer>
-
 			</div>
 
 		<!-- Scripts -->
