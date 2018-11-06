@@ -68,22 +68,22 @@
 							    "weight": 2,
 							};
 
-							//railroad data
+							//current railroad data
 							$.getJSON("assets/geojson/Railroads.geojson",function(railroadData){
 
 							L.geoJson(railroadData, {style: currentStyle}).addTo(map); 
 							});
 
-							//old railroad data
+							//historic railroad data
 							$.getJSON("assets/geojson/Historic_Railroads.geojson",function(historicRailData){
 
-							L.geoJson(historicRailData, {
-								style: historicStyle},
-								
-								onEachFeature: function(feature, layer) {
-									layer.bindPopup(feature.properties.type);
-								}
-								).addTo(map);
+								L.geoJson(historicRailData, {
+									style: historicStyle,
+
+									onEachFeature: function(feature, layer) {
+										layer.bindPopup(feature.properties.type);
+									}
+								}).addTo(map);
 							});
 
 						</script>
