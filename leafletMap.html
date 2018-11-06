@@ -63,15 +63,15 @@
 							    "weight": 6,
 							};
 
-							var newStyle = {
+							var currentStyle = {
 							    "color": "blue",
-							    "weight": 3,
+							    "weight": 2,
 							};
 
 							//railroad data
 							$.getJSON("assets/geojson/Railroads.geojson",function(railroadData){
 
-							L.geoJson(railroadData, {style: newStyle}).addTo(map); 
+							L.geoJson(railroadData, {style: currentStyle}).addTo(map); 
 							});
 
 							//old railroad data
