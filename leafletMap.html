@@ -23,7 +23,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 		<style>
-			#map {height: 100vh; background-color: grey;}
+			#map {height: 600px; width: 100%; background-color: grey;}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -32,7 +32,6 @@
 			<!-- Header -->
 			<header id="header">
 				<h1>Leaflet Map</h1>
-				<p>subtitle here</p>
 			</header>
 				<!-- Main -->
 				<div id="main">
@@ -59,27 +58,11 @@
 							map.addLayer(Stamen_TonerLite);
 							map.scrollWheelZoom.disable()
 
-							var geojsonFeature = {
-							    "type": "Feature",
-							    "properties": {
-							        "name": "Coors Field",
-							        "amenity": "Baseball Stadium",
-							        "popupContent": "This is where the Rockies play!"
-							    },
-							    "geometry": {
-							        "type": "Point",
-							        "coordinates": [-104.99404, 39.75621]
-							    }
-							};
-
 							$.getJSON("bikedata.geojson",function(data){
 
 							L.geoJson(data).addTo(map);
 							});
 
-							L.geoJSON(geojsonFeature, {
-								onEachFeature: onEachFeature
-							}).addTo(map);
 						</script>
 					</section>
 
