@@ -58,17 +58,26 @@
 							map.addLayer(Stamen_TonerLite);
 							map.scrollWheelZoom.disable()
 
-							//railroad data
-							$.getJSON("assets/geojson/Railroads.geojson",function(data1){
+							function style(feature) {
+							    return {
+							        weight: 2,
+							        opacity: 1,
+							        color: 'white',
+							        dashArray: '3',
+							        fillOpacity: 0.7
+							    };
+							}
 
-							L.geoJson(data1).addTo(map);
+							//railroad data
+							$.getJSON("assets/geojson/Railroads.geojson",function(railroadData){
+
+							L.geoJson(railroadData, {style: style}).addTo(map); 
 							});
 
 							//old railroad data
-							$.getJSON("assets/geojson/Historic_Railroads.geojson",function(data2){
-							color: 'white',
-							
-							L.geoJson(data2).addTo(map);
+							$.getJSON("assets/geojson/Historic_Railroads.geojson",function(historicRailData){
+
+							L.geoJson(historicRailData).addTo(map);
 							});
 
 						</script>
