@@ -58,22 +58,26 @@
 							map.addLayer(Stamen_TonerLite);
 							map.scrollWheelZoom.disable()
 
-							var myStyle = {
+							var historicStyle = {
 							    "color": "#ff7800",
-							    "weight": 5,
+							    "weight": 6,
 							};
 
+							var newStyle = {
+							    "color": "#ff7800",
+							    "weight": 3,
+							};
 
 							//railroad data
 							$.getJSON("assets/geojson/Railroads.geojson",function(railroadData){
 
-							L.geoJson(railroadData, {style: myStyle}).addTo(map); 
+							L.geoJson(railroadData, {style: newStyle}).addTo(map); 
 							});
 
 							//old railroad data
 							$.getJSON("assets/geojson/Historic_Railroads.geojson",function(historicRailData){
 
-							L.geoJson(historicRailData).addTo(map);
+							L.geoJson(historicRailData, {style: historicStyle}).addTo(map);
 							});
 
 						</script>
