@@ -58,7 +58,7 @@
 							map.addLayer(Stamen_TonerLite);
 							map.scrollWheelZoom.disable()
 
-							$.getJSON("./assets/geojson/Railroads.geojson",function(data){
+							$.getJSON("assets/geojson/Railroads.geojson",function(data){
 
 							L.geoJson(data).addTo(map);
 							});
