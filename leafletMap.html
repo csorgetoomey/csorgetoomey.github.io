@@ -23,6 +23,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 		<script src="leaflet.ajax.min.js"></script>
+		<script src="jquery-2.1.1.min.js"></script> 
 
 		<style>
 			#map {height: 100vh; background-color: grey;}
@@ -61,18 +62,11 @@
 							map.addLayer(Stamen_TonerLite);
 							map.scrollWheelZoom.disable()
 
-							var geojsonLayer = new L.GeoJSON.AJAX("./assets/geojson/Railroads.geojson");       
-							geojsonLayer.addTo(map);
 							// load GeoJSON from an external file
-							$.getJSON("./assets/geojson/Railroads.geojson",function(data){
-								//add GeoJSON layer to the map once the file is loaded
-								var datalayer = L.geoJson(data ,{
-									onEachFeature: function(feature, featureLayer) {
-										featureLayer.bindPopup(feature.properties.NAME_1);
-									}
-								}).addTo(map);
-								map.fitBounds(datalayer.getBounds());
-							});
+						  	$.getJSON("rodents.geojson",function(data){
+						    // add GeoJSON layer to the map once the file is loaded
+						    L.geoJson(data).addTo(map);
+
 						</script>
 					</section>
 
