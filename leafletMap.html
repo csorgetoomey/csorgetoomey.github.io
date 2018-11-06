@@ -59,15 +59,26 @@
 							map.addLayer(Stamen_TonerLite);
 							map.scrollWheelZoom.disable()
 
+							var geojsonFeature = {
+							    "type": "Feature",
+							    "properties": {
+							        "name": "Coors Field",
+							        "amenity": "Baseball Stadium",
+							        "popupContent": "This is where the Rockies play!"
+							    },
+							    "geometry": {
+							        "type": "Point",
+							        "coordinates": [-104.99404, 39.75621]
+							    }
+							};
+
 							$.getJSON("bikedata.geojson",function(data){
-							// add GeoJSON layer to the map once the file is loaded
-							var datalayer = L.geoJson(data ,{
-								onEachFeature: function(feature, featureLayer) {
-									featureLayer.bindPopup(feature.properties.NAME_1);
-								}
+
+							L.geoJson(data).addTo(map);
+
+							L.geoJSON(geojsonFeature, {
+								onEachFeature: onEachFeature
 							}).addTo(map);
-							map.fitBounds(datalayer.getBounds());
-							});
 						</script>
 					</section>
 
