@@ -75,6 +75,7 @@
 							$.getJSON("bikedata.geojson",function(data){
 
 							L.geoJson(data).addTo(map);
+							});
 
 							L.geoJSON(geojsonFeature, {
 								onEachFeature: onEachFeature
