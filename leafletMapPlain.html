@@ -38,9 +38,6 @@
 				map.addLayer(Stamen_TonerLite);
 				map.scrollWheelZoom.disable()
 
-				$.getJSON("bikedata.geojson",function(data){
-				L.geoJson(data).addTo(map);
-				});
 			</script>
 	</body>
 </html>
