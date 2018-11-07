@@ -70,19 +70,16 @@
 
 							//current railroad data
 							$.getJSON("assets/geojson/Railroads.geojson",function(railroadData){
-
-							L.geoJson(railroadData, {style: currentStyle}).addTo(map); 
+								L.geoJson(railroadData, {
+									style: currentStyle
+								}).addTo(map).bindPopup("Current railroad"); 
 							});
 
 							//historic railroad data
 							$.getJSON("assets/geojson/Historic_Railroads.geojson",function(historicRailData){
-
 								L.geoJson(historicRailData, {
 									style: historicStyle,
-
-									layer.bindPopup("Historic railroad");
-									
-								}).addTo(map);
+								}).addTo(map).bindPopup("Historic railroad");
 							});
 
 						</script>
