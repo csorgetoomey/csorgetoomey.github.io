@@ -80,9 +80,8 @@
 								L.geoJson(historicRailData, {
 									style: historicStyle,
 
-									onEachFeature: function(feature, layer) {
-										layer.bindPopup("Historic railroad");
-									}
+									layer.bindPopup("Historic railroad");
+									
 								}).addTo(map);
 							});
 
