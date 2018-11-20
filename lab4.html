@@ -25,9 +25,10 @@
 		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
 		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
 
-		<style>
-			#map {height: 600px; width: 100%; background-color: grey;}
-		</style>
+		<!-- openweathermap stuff -->
+		<link rel="stylesheet" type="text/css" href="assets/css/leaflet-openweathermap.css" />
+		<script type="text/javascript" src="assets/js/leaflet-openweathermap.js"></script>
+
 	</head>
 	<body class="is-preload">
 		<!-- Wrapper -->
@@ -41,7 +42,8 @@
 					<!-- Content -->
 					<section id="content" class="main">
 
-						<h2>Leaflet Map</h2>
+						<h2>Leaflet Map + Weather Data</h2>
+						<p>Click top right icon on map for layers.</p>
 						<div id="map" style='width: 100%; height: 600px;'></div>
 						<script> 
 							//basemap from https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -52,15 +54,29 @@
 								maxZoom: 20,
 								ext: 'png'
 							});
+
+							//code from openweathermaps
+							var clouds = L.OWM.clouds({opacity: 0.7, appId: 'd20e36bf39c19062a8275929417ea165'});
+							var temp = L.OWM.temperature({opacity: 0.3, appId: 'd20e36bf39c19062a8275929417ea165'});
+							var precipitation = L.OWM.precipitation({opacity: 0.5, appId: 'd20e36bf39c19062a8275929417ea165'});
+							var wind = L.OWM.wind({opacity: 0.3, appId: 'd20e36bf39c19062a8275929417ea165'});
+							var pressure = L.OWM.pressure({opacity: 0.4, appId: 'd20e36bf39c19062a8275929417ea165'});
+
 							var map = new L.Map("map", {
 								center: new L.LatLng(47.221769, -122.457158),
-								zoom: 12
+								zoom: 3
 							});
 							map.addLayer(Stamen_TonerLite);
+
+							var baseMaps = { "Weather Layers": Stamen_TonerLite };
+							var overlayMaps = { "Clouds": clouds, "Precipitation": precipitation, "Temperature": temp, "Wind": wind, "Pressure": pressure };
+							var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+
 						</script>
 
 						<br><br>
 
+						<!--most of this is from the example on the class GitHub -->
 						<h2>Mapbox Map + Earthquake Data</h2>
 						<!-- the div for the map -->
 						<div id='boxmap' style='width: 100%; height: 600px;'></div>
@@ -89,11 +105,10 @@
 							    	"type":"circle",
 							    	"source":"earthquakes"
 							    });
-								//add a handler for clicking/popups 
 								//Thanks to: https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/ 
 								map.on('click', 'equakes', function (e) {
 							        var coordinates = e.features[0].geometry.coordinates.slice();
-							        var description = "<p>Magnitude: " + e.features[0].properties.mag + "<br>Location: " + e.features[0].properties.place + "<br>URL: <a href='" +  e.features[0].properties.url + "'>click here</a></p>"
+							        var description = "<p><br>Magnitude: " + e.features[0].properties.mag + "<br>Location: " + e.features[0].properties.place + "<br>URL: <a href='" +  e.features[0].properties.url + "'target=newtab>click here</a></p>"
 							        // Ensure that if the map is zoomed out such that multiple
 							        // copies of the feature are visible, the popup appears
 							        // over the copy being pointed to.
