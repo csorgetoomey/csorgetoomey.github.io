@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Leaflet Map</title>
+		<title>Lab 4</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -21,23 +21,27 @@
 		   	crossorigin=""></script>
 		<!-- Add JQuery to get local GeoJson file -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- the mapbox libraries -->
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
 
+		<style>
+			#map {height: 600px; width: 100%; background-color: grey;}
+		</style>
 	</head>
 	<body class="is-preload">
 		<!-- Wrapper -->
 		<div id="wrapper">
 			<!-- Header -->
 			<header id="header">
-				<h1>Leaflet Map</h1>
+				<h1>Lab 4</h1>
 			</header>
 				<!-- Main -->
 				<div id="main">
 					<!-- Content -->
 					<section id="content" class="main">
-						<h2>Historic Railroads and Current Railroads</h2>
-						<p>
-						This map shows existing railroads as well as historic railroads. The blue lines are current rail roads and orange are historic.
-						</p>
+
+						<h2>Leaflet Map</h2>
 						<div id="map" style='width: 100%; height: 600px;'></div>
 						<script> 
 							//basemap from https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -53,33 +57,59 @@
 								zoom: 12
 							});
 							map.addLayer(Stamen_TonerLite);
-							map.scrollWheelZoom.disable()
-
-							var historicStyle = {
-							    "color": "#ff7800",
-							    "weight": 8,
-							};
-
-							var currentStyle = {
-							    "color": "blue",
-							    "weight": 3,
-							};
-
-							//current railroad data
-							$.getJSON("assets/geojson/Railroads.geojson",function(railroadData){
-								L.geoJson(railroadData, {
-									style: currentStyle
-								}).addTo(map).bindPopup("Current railroad"); 
-							});
-
-							//historic railroad data
-							$.getJSON("assets/geojson/Historic_Railroads.geojson",function(historicRailData){
-								L.geoJson(historicRailData, {
-									style: historicStyle,
-								}).addTo(map).bindPopup("Historic railroad");
-							});
-
 						</script>
+
+						<br><br>
+
+						<h2>Mapbox Map + Earthquake Data</h2>
+						<!-- the div for the map -->
+						<div id='boxmap' style='width: 100%; height: 600px;'></div>
+						<!-- the script for the map -->
+						<script>
+							//mapbox token
+							mapboxgl.accessToken = 'pk.eyJ1IjoiY3NvcmdlIiwiYSI6ImNqb3A2cGMwMzAxbTkzcW9meDIzMDE0ZHMifQ.R5gWO0aBEldQdqU0Nlir-Q';
+							
+							//The map variable
+							var map = new mapboxgl.Map({
+							    container: 'boxmap',
+							    style: 'mapbox://styles/csorge/cjop8lomm4syh2ro1oogrl0fo',
+							    center: [-122, 45],
+							    zoom: 2
+							});
+							//on map load, do some stuff
+							map.on('load', function(){
+								//add a source layer for earthquakes
+								map.addSource('earthquakes', {
+							        "type": "geojson",
+							        "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
+							    });
+							    //add the earthquakes to the map
+							    map.addLayer({
+							    	"id":"equakes",
+							    	"type":"circle",
+							    	"source":"earthquakes"
+							    });
+								//add a handler for clicking/popups 
+								//Thanks to: https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/ 
+								map.on('click', 'equakes', function (e) {
+							        var coordinates = e.features[0].geometry.coordinates.slice();
+							        var description = "<p>Magnitude: " + e.features[0].properties.mag + "<br>Location: " + e.features[0].properties.place + "<br>URL: <a href='" +  e.features[0].properties.url + "'>click here</a></p>"
+							        // Ensure that if the map is zoomed out such that multiple
+							        // copies of the feature are visible, the popup appears
+							        // over the copy being pointed to.
+							        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+							            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+							        }
+							        //make the popup
+							        new mapboxgl.Popup()
+							            .setLngLat(coordinates)
+							            .setHTML(description)
+							            .addTo(map);
+							    });
+							});
+						</script>
+						<br>
+
 					</section>
 
 				</div>
