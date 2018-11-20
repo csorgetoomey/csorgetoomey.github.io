@@ -29,6 +29,10 @@
 		<link rel="stylesheet" type="text/css" href="assets/css/leaflet-openweathermap.css" />
 		<script type="text/javascript" src="assets/js/leaflet-openweathermap.js"></script>
 
+		<!-- leaflet reset zoom functionality -->
+		<link rel="stylesheet" href="assets/css/L.Control.ZoomMin.css" media="screen">
+		<script src="assets/js/L.Control.ZoomMin.js"></script>
+
 	</head>
 	<body class="is-preload">
 		<!-- Wrapper -->
@@ -64,13 +68,20 @@
 
 							var map = new L.Map("map", {
 								center: new L.LatLng(47.221769, -122.457158),
-								zoom: 3
+								zoom: 3,
+								minZoom:3,
+								maxZoom:16,
+								zoomControl: false
 							});
 							map.addLayer(Stamen_TonerLite);
+							//adds reset zoom button
+							map.addControl(new L.Control.ZoomMin())
 
 							var baseMaps = { "Weather Layers": Stamen_TonerLite };
 							var overlayMaps = { "Clouds": clouds, "Precipitation": precipitation, "Temperature": temp, "Wind": wind, "Pressure": pressure };
 							var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+
 
 						</script>
 
@@ -121,6 +132,8 @@
 							            .setHTML(description)
 							            .addTo(map);
 							    });
+
+
 							});
 						</script>
 						<br>
