@@ -33,15 +33,22 @@
 
 			//evacuation route style
 			var laharStyle = {
-			    "color": "green",
-			    "weight": 2,
+			    "color": "red",
+			    "weight": 0,
 			};
 
 			//time of travel style
 			var timeStyle = {
 			    "color": "red",
-			    "weight": 4,
+			    "weight": 5,
 			};
+
+			//display lahars
+			$.getJSON("assets/geojson/Volcanic_Hazards.geojson",function(lahars){
+				L.geoJson(lahars, {
+					style: laharStyle
+				}).addTo(map).bindPopup("Lahars"); 
+			});
 
 			//display evacuation routes
 			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime){
@@ -59,13 +66,6 @@
 						layer.bindPopup('<h1>Time Zone: ' + feature.properties.TIME_ZONE + '</h1>');
 					}
 				}).addTo(map); 
-			});
-
-			//display lahars
-			$.getJSON("assets/geojson/Volcanic_Hazards.geojson",function(lahars){
-				L.geoJson(lahars, {
-					style: laharStyle
-				}).addTo(map).bindPopup("Lahars"); 
 			});
 
 		</script>
