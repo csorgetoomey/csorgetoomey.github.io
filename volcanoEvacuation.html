@@ -33,7 +33,7 @@
 
 			//evacuation route style
 			var evacStyle = {
-			    "color": "blue",
+			    "color": "green",
 			    "weight": 2,
 			};
 
@@ -47,9 +47,9 @@
 			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime){
 				L.geoJson(travelTime, {
 					style: timeStyle
-					//onEachFeature: function(feature, layer) {
-					//	layer.bindPopup('<p>Time Zone: '+ feature.properties.TIME_ZONE + '</p>');
-					//}
+					onEachFeature: function(feature, layer) {
+						layer.bindPopup('<p>'+ feature.properties.TIME_ZONE + '</p>');
+					}
 				}).addTo(map); 
 			});
 
