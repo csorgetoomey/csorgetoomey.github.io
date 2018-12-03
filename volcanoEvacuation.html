@@ -33,11 +33,11 @@
 			//evacuation route style
 			var evacStyle = {
 			    "color": "blue",
-			    "weight": 3,
+			    "weight": 2,
 			};
 
 			//time of travel style
-			var evacStyle = {
+			var timeStyle = {
 			    "color": "red",
 			    "weight": 3,
 			};
@@ -52,7 +52,7 @@
 			//display time of travel
 			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime){
 				L.geoJson(travelTime, {
-					style: style
+					style: timeStyle
 				}).addTo(map).bindPopup("Travel Time"); 
 			});
 
