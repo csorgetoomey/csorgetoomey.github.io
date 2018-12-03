@@ -46,10 +46,11 @@
 			//display evacuation routes
 			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime){
 				L.geoJson(travelTime, {
+					style: timeStyle,
 					onEachFeature: function(feature, layer) {
 						layer.bindPopup('<h1>Time Zone: ' + feature.properties.TIME_ZONE + '</h1>');
 					}
-					style: timeStyle;
+					
 				}).addTo(map); 
 			});
 
