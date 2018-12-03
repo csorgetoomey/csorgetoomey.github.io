@@ -30,15 +30,15 @@
 			map.addLayer(Stamen_TonerLite);
 			//map.scrollWheelZoom.disable()
 
-			//var style = {
-			 //   "color": "blue",
-			//    "weight": 3,
-			//};
+			var style = {
+			    "color": "blue",
+			    "weight": 3,
+			};
 
 			//current railroad data
 			$.getJSON("assets/geojson/Lahar_Evacuation_Routes.geojson",function(evacRoutes){
 				L.geoJson(evacRoutes, {
-					style: "color": "red", "weight": 3
+					style: style
 				}).addTo(map).bindPopup("Evacuation Route"); 
 			});
 
