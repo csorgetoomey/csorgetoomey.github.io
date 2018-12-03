@@ -55,11 +55,15 @@
 				var timeLayer = L.geoJson(travelTime, {
 					style: timeStyle,
 					style: function(feature) {
+						//A, B, C, D, A-B, B-C, C-D
 						switch (feature.properties.TIME_ZONE) {
 							case 'A': return {color: "yellow"};
-							case 'B': return {color: "blue"};
-							case 'C': return {color: "green"};
-							case 'D': return {color: "purple"};
+							case 'B': return {color: "red"};
+							case 'C': return {color: "blue"};
+							case 'D': return {color: "blue"};
+							case 'A-B': return {color: "orange"};
+							case 'B-C': return {color: "purple"};
+							case 'C-D': return {color: "blue"};
 						}
 					},
 					onEachFeature: function(feature, layer) {
