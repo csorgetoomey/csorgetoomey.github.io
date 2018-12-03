@@ -47,11 +47,23 @@
 			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime){
 				L.geoJson(travelTime, {
 					style: timeStyle,
+					style: function(feature) {
+						switch (feature.properties.TIME_ZONE) {
+							case 'A': return {color: "red"};
+							case 'B': return {color: "blue"};
+						}
+					}
 					onEachFeature: function(feature, layer) {
 						layer.bindPopup('<h1>Time Zone: ' + feature.properties.TIME_ZONE + '</h1>');
 					}
 					
 				}).addTo(map); 
+			});
+
+			$.getJSON("assets/geojson/Volcanic_Hazards.geojson",function(lahars){
+				L.geoJson(lahars, {
+					style: style
+				}).addTo(map).bindPopup("Lahars"); 
 			});
 
 			//display time of travel

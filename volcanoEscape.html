@@ -16,18 +16,16 @@
 		<div id="map" style='width: 800px; height: 600px;'></div>
 		<script> 
 			//basemap from https://leaflet-extras.github.io/leaflet-providers/preview/
-			var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
-				attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-				subdomains: 'abcd',
-				minZoom: 0,
-				maxZoom: 20,
-				ext: 'png'
+			var Thunderforest_Outdoors = L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey={apikey}', {
+				attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+				apikey: 'a9344dc9e7ec4d359f7d851a3131b86b',
+				maxZoom: 22
 			});
 			var map = new L.Map("map", {
 				center: new L.LatLng(47.221769, -122.457158),
 				zoom: 12
 			});
-			map.addLayer(Stamen_TonerLite);
+			map.addLayer(Thunderforest_Outdoors);
 			//map.scrollWheelZoom.disable()
 
 			var style = {
@@ -35,12 +33,20 @@
 			    "weight": 3,
 			};
 
-			//current railroad data
+			//display lahars
 			$.getJSON("assets/geojson/Volcanic_Hazards.geojson",function(lahars){
 				L.geoJson(lahars, {
 					style: style
 				}).addTo(map).bindPopup("Lahars"); 
 			});
+			
+			//display time of travel
+			$.getJSON("assets/geojson/Lahar_Evacuation_Routes.geojson",function(evacRoutes){
+				L.geoJson(evacRoutes, {
+					style: evacStyle
+				}).addTo(map).bindPopup("Evacuation Routes"); 
+			});
+
 
 		</script>
 	</body>
