@@ -40,13 +40,12 @@
 				}).addTo(map).bindPopup("Lahars"); 
 			});
 			
-			//display time of travel
+			//display evac routes
 			$.getJSON("assets/geojson/Lahar_Evacuation_Routes.geojson",function(evacRoutes){
 				L.geoJson(evacRoutes, {
 					style: style
 				}).addTo(map).bindPopup("Evacuation Routes"); 
 			});
-
 
 		</script>
 	</body>

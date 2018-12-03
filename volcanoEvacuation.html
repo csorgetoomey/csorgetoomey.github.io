@@ -32,7 +32,7 @@
 			//map.scrollWheelZoom.disable()
 
 			//evacuation route style
-			var evacStyle = {
+			var laharStyle = {
 			    "color": "green",
 			    "weight": 2,
 			};
@@ -52,26 +52,20 @@
 							case 'A': return {color: "red"};
 							case 'B': return {color: "blue"};
 							case 'C': return {color: "green"};
+							case 'D': return {color: "purple"};
 						}
 					},
 					onEachFeature: function(feature, layer) {
 						layer.bindPopup('<h1>Time Zone: ' + feature.properties.TIME_ZONE + '</h1>');
 					}
-					
 				}).addTo(map); 
 			});
 
+			//display lahars
 			$.getJSON("assets/geojson/Volcanic_Hazards.geojson",function(lahars){
 				L.geoJson(lahars, {
-					style: style
+					style: laharStyle
 				}).addTo(map).bindPopup("Lahars"); 
-			});
-
-			//display time of travel
-			$.getJSON("assets/geojson/Lahar_Evacuation_Routes.geojson",function(evacRoutes){
-				L.geoJson(evacRoutes, {
-					style: evacStyle
-				}).addTo(map).bindPopup("Evacuation Routes"); 
 			});
 
 		</script>
