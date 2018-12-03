@@ -30,16 +30,30 @@
 			map.addLayer(Stamen_TonerLite);
 			//map.scrollWheelZoom.disable()
 
-			var style = {
+			//evacuation route style
+			var evacStyle = {
 			    "color": "blue",
 			    "weight": 3,
 			};
 
-			//current railroad data
+			//time of travel style
+			var evacStyle = {
+			    "color": "red",
+			    "weight": 3,
+			};
+
+			//display evacuation routes
 			$.getJSON("assets/geojson/Lahar_Evacuation_Routes.geojson",function(evacRoutes){
 				L.geoJson(evacRoutes, {
-					style: style
+					style: evacStyle
 				}).addTo(map).bindPopup("Evacuation Route"); 
+			});
+
+			//display time of travel
+			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime){
+				L.geoJson(travelTime, {
+					style: style
+				}).addTo(map).bindPopup("Travel Time"); 
 			});
 
 		</script>
