@@ -40,16 +40,16 @@
 			//time of travel style
 			var timeStyle = {
 			    "color": "red",
-			    "weight": 3,
+			    "weight": 4,
 			};
 
 			//display evacuation routes
 			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime){
 				L.geoJson(travelTime, {
-					style: timeStyle
 					onEachFeature: function(feature, layer) {
-						layer.bindPopup('<p>'+ feature.properties.TIME_ZONE + '</p>');
+						layer.bindPopup('<h1>' + feature.properties.TIME_ZONE + '</h1>');
 					}
+					style: timeStyle
 				}).addTo(map); 
 			});
 
