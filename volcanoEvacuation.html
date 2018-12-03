@@ -11,6 +11,7 @@
 		   	crossorigin=""></script>
 		<!-- Add JQuery to get local GeoJson file -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	</head>
 	<body>
 		<div id="map" style='width: 800px; height: 600px;'></div>
@@ -43,17 +44,19 @@
 			};
 
 			//display evacuation routes
-			$.getJSON("assets/geojson/Lahar_Evacuation_Routes.geojson",function(evacRoutes){
-				L.geoJson(evacRoutes, {
-					style: evacStyle
-				}).addTo(map).bindPopup("Evacuation Route"); 
+			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime){
+				L.geoJson(travelTime, {
+					onEachFeature: function(feature, layer) {
+						layer.bindPopup('<p>'+ feature.properties.TIME_ZONE + '</p>');
+					}
+				}).addTo(map); 
 			});
 
 			//display time of travel
-			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime){
-				L.geoJson(travelTime, {
-					style: timeStyle
-				}).addTo(map).bindPopup("Travel Time"); 
+			$.getJSON("assets/geojson/Lahar_Evacuation_Routes.geojson",function(evacRoutes){
+				L.geoJson(evacRoutes, {
+					style: evacStyle
+				}).addTo(map).bindPopup("Evacuation Routes"); 
 			});
 
 		</script>
