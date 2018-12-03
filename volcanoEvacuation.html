@@ -51,8 +51,9 @@
 						switch (feature.properties.TIME_ZONE) {
 							case 'A': return {color: "red"};
 							case 'B': return {color: "blue"};
+							case 'C': return {color: "green"};
 						}
-					}
+					},
 					onEachFeature: function(feature, layer) {
 						layer.bindPopup('<h1>Time Zone: ' + feature.properties.TIME_ZONE + '</h1>');
 					}

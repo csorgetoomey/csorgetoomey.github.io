@@ -43,7 +43,7 @@
 			//display time of travel
 			$.getJSON("assets/geojson/Lahar_Evacuation_Routes.geojson",function(evacRoutes){
 				L.geoJson(evacRoutes, {
-					style: evacStyle
+					style: style
 				}).addTo(map).bindPopup("Evacuation Routes"); 
 			});
 
