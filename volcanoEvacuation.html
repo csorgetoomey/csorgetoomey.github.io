@@ -47,9 +47,9 @@
 			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime){
 				L.geoJson(travelTime, {
 					onEachFeature: function(feature, layer) {
-						layer.bindPopup('<h1>' + feature.properties.TIME_ZONE + '</h1>');
+						layer.bindPopup('<h1>Time Zone: ' + feature.properties.TIME_ZONE + '</h1>');
 					}
-					//style: timeStyle;
+					style: timeStyle;
 				}).addTo(map); 
 			});
 
