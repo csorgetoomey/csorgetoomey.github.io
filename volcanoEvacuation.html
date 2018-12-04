@@ -75,6 +75,23 @@
 					},
 				}).addTo(map); 
 			});
+
+			//Make a legend, add it to the bottom right
+			var legend = L.control({position: 'bottomright'});
+
+			//when adding the legend to the map...
+			legend.onAdd = function (map) {
+				//create a div for it
+			    var div = L.DomUtil.create('div', 'info legend');
+			    //set an image to the div content
+			    div.innerHTML = "<img src=assets/images/LEGENDARY.png style='width: 75px;'></img>";
+			    //return the div
+			    return div;
+			};
+			//add the legend to the map
+			legend.addTo(map);
+
+
 			map.on('click', function() {
 				layer.bringToFront();
 			});
