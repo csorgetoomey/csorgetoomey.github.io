@@ -70,13 +70,10 @@
 					},
 					onEachFeature: function(feature, layer) {
 						layer.bindPopup('<h1>Time Zone: ' + feature.properties.TIME_ZONE + '</h1>');
+						layer.bringToFront();
 					},
-					layer.bringToFront();
 				}).addTo(map); 
-
 			});
-			
-
 
 		</script>
 	</body>
