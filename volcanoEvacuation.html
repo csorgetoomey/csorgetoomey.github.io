@@ -25,8 +25,8 @@
 			});
 
 			var map = new L.Map("map", {
-				center: new L.LatLng(47.221769, -122.457158),
-				zoom: 12
+				center: new L.LatLng(47.099581, -122.221653),
+				zoom: 10
 			});
 			map.addLayer(Thunderforest_Outdoors);
 			map.scrollWheelZoom.disable()
@@ -54,7 +54,7 @@
 			var timeLayer
 			//display evacuation routes
 			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime) {
-				timeLayer = L.geoJson(travelTime, {
+				var layer = L.geoJson(travelTime, {
 					style: timeStyle,
 					style: function(feature) {
 						//A, B, C, D, A-B, B-C, C-D
@@ -71,11 +71,12 @@
 					onEachFeature: function(feature, layer) {
 						layer.bindPopup('<h1>Time Zone: ' + feature.properties.TIME_ZONE + '</h1>');
 					},
+					layer.bringToFront();
+				}).addTo(map); 
 
-				}).addTo(map).bringToFront(); 
 			});
 			
-			//timeLayer.bringToFront();
+
 
 		</script>
 	</body>
