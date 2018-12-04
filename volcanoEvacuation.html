@@ -48,7 +48,7 @@
 			$.getJSON("assets/geojson/Volcanic_Hazards.geojson",function(lahars){
 				L.geoJson(lahars, {
 					style: laharStyle
-				}).addTo(map).bindPopup("Lahars"); 
+				}).addTo(map);//.bindPopup("Lahars"); 
 			});
 
 			var layer;
