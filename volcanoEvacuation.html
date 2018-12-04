@@ -73,7 +73,10 @@
 					},
 				}).addTo(map); 
 			});
-			layer.bringToFront();
+			map.on('click', function() {
+				layer.bringToFront();
+			});
+
 		</script>
 	</body>
 </html>
