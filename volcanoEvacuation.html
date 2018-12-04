@@ -44,11 +44,17 @@
 			    "weight": 10,
 			};
 
+			//display lahars
+			$.getJSON("assets/geojson/Volcanic_Hazards.geojson",function(lahars){
+				L.geoJson(lahars, {
+					style: laharStyle
+				}).addTo(map).bindPopup("Lahars"); 
+			});
 
-			var timeLayer
+			var layer;
 			//display evacuation routes
 			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime) {
-				var layer = L.geoJson(travelTime, {
+				layer = L.geoJson(travelTime, {
 					style: timeStyle,
 					style: function(feature) {
 						//A, B, C, D, A-B, B-C, C-D
@@ -67,13 +73,6 @@
 						layer.bringToFront();
 					},
 				}).addTo(map); 
-			});
-			
-			//display lahars
-			$.getJSON("assets/geojson/Volcanic_Hazards.geojson",function(lahars){
-				L.geoJson(lahars, {
-					style: laharStyle
-				}).addTo(map).bindPopup("Lahars"); 
 			});
 
 		</script>
