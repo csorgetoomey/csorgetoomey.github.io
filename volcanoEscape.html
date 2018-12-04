@@ -46,11 +46,16 @@
 				}).addTo(map).bindPopup("Lahars"); 
 			});
 			
+			var layer;
 			//display evac routes
 			$.getJSON("assets/geojson/Lahar_Evacuation_Routes.geojson",function(evacRoutes){
-				L.geoJson(evacRoutes, {
+				layer = L.geoJson(evacRoutes, {
 					style: evacStyle
 				}).addTo(map).bindPopup("Evacuation Routes"); 
+			});
+
+			map.on('click', function() {
+				layer.bringToFront();
 			});
 
 		</script>
