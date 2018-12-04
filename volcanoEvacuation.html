@@ -61,13 +61,13 @@
 					style: function(feature) {
 						//A, B, C, D, A-B, B-C, C-D
 						switch (feature.properties.TIME_ZONE) {
-							case 'A': return {color: "red"}; 
+							case 'A': return {color: "#FF0000"}; //red
 							case 'B': return {color: "#FFFF00"}; //yellow
-							case 'C': return {color: "blue"};
-							case 'D': return {color: "blue"};
-							case 'A-B': return {color: "orange"};
-							case 'B-C': return {color: "purple"};
-							case 'C-D': return {color: "blue"};
+							case 'C': return {color: "#0000FF"}; //blue
+							case 'D': return {color: "#0000FF"}; //blue
+							case 'A-B': return {color: "#FF4500"}; //orange
+							case 'B-C': return {color: "#800080"}; //purple
+							case 'C-D': return {color: "#0000FF"}; //blue
 						}
 					},
 					onEachFeature: function(feature, layer) {
