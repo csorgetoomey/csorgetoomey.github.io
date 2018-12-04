@@ -33,7 +33,7 @@
 
 			//evacuation route style
 			var laharStyle = {
-			    "color": "#8B0000",
+			    "color": "#8B0000", //dark red
 			    "weight": 0,
 			    "fillOpacity": .65,
 			};
@@ -55,7 +55,8 @@
 			//display evacuation routes
 			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime) {
 				layer = L.geoJson(travelTime, {
-					style: timeStyle,
+					style: timeStyle, 
+					//switch color based on an attribute
 					style: function(feature) {
 						//A, B, C, D, A-B, B-C, C-D
 						switch (feature.properties.TIME_ZONE) {
