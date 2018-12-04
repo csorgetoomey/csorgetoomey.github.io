@@ -28,22 +28,28 @@
 			map.addLayer(Thunderforest_Outdoors);
 			//map.scrollWheelZoom.disable()
 
-			var style = {
-			    "color": "blue",
-			    "weight": 3,
+			var laharStyle = {
+			    "color": "#8B0000",
+			    "weight": 0,
+			    "fillOpacity": .75,
 			};
+
+			var evacStyle = {
+				"color": "blue",
+				"weight": 5,
+			}
 
 			//display lahars
 			$.getJSON("assets/geojson/Volcanic_Hazards.geojson",function(lahars){
 				L.geoJson(lahars, {
-					style: style
+					style: laharStyle
 				}).addTo(map).bindPopup("Lahars"); 
 			});
 			
 			//display evac routes
 			$.getJSON("assets/geojson/Lahar_Evacuation_Routes.geojson",function(evacRoutes){
 				L.geoJson(evacRoutes, {
-					style: style
+					style: evacStyle
 				}).addTo(map).bindPopup("Evacuation Routes"); 
 			});
 
