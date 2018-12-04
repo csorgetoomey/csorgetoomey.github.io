@@ -29,7 +29,7 @@
 				zoom: 12
 			});
 			map.addLayer(Thunderforest_Outdoors);
-			//map.scrollWheelZoom.disable()
+			map.scrollWheelZoom.disable()
 
 			//evacuation route style
 			var laharStyle = {
@@ -72,7 +72,7 @@
 						layer.bindPopup('<h1>Time Zone: ' + feature.properties.TIME_ZONE + '</h1>');
 					},
 
-				}).addTo(map); 
+				}).addTo(map).bringToFront(); 
 			});
 			
 			//timeLayer.bringToFront();
