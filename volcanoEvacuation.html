@@ -35,7 +35,7 @@
 			var laharStyle = {
 			    "color": "#8B0000",
 			    "weight": 0,
-			    "fillOpacity": .75,
+			    "fillOpacity": .65,
 			};
 
 			//time of travel style
@@ -51,9 +51,10 @@
 				}).addTo(map).bindPopup("Lahars"); 
 			});
 
+			var timeLayer
 			//display evacuation routes
 			$.getJSON("assets/geojson/Volcanic_Time_of_Travel.geojson",function(travelTime) {
-				var timeLayer = L.geoJson(travelTime, {
+				timeLayer = L.geoJson(travelTime, {
 					style: timeStyle,
 					style: function(feature) {
 						//A, B, C, D, A-B, B-C, C-D
@@ -73,6 +74,7 @@
 
 				}).addTo(map); 
 			});
+			
 
 		</script>
 	</body>
