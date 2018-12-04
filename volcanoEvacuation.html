@@ -14,7 +14,7 @@
 
 	</head>
 	<body>
-		<div id="map" style='width: 800px; height: 600px;'></div>
+		<div id="map" style='width: 100%; height: 800px;'></div>
 		<script> 
 			//basemap from https://leaflet-extras.github.io/leaflet-providers/preview/
 			//provided by thunderforest
@@ -72,7 +72,7 @@
 						layer.bindPopup('<h1>Time Zone: ' + feature.properties.TIME_ZONE + '</h1>');
 					},
 
-				}).addTo(map).bringToFront(); 
+				}).addTo(map); 
 			});
 			
 			//timeLayer.bringToFront();
