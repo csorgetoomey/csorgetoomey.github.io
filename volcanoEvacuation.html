@@ -25,6 +25,10 @@
 				maxZoom: 22
 			});
 
+			map.on('load', function() {
+				layer.bringToFront();
+			});
+
 			var map = new L.Map("map", {
 				center: new L.LatLng(47.099581, -122.221653),
 				zoom: 10
@@ -79,7 +83,6 @@
 				layer.bringToFront();
 			});
 			//layer.bringToFront();
-
 		</script>
 	</body>
 </html>
