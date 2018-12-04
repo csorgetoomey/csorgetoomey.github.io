@@ -50,8 +50,11 @@
 			//display evac routes
 			$.getJSON("assets/geojson/Lahar_Evacuation_Routes.geojson",function(evacRoutes){
 				layer = L.geoJson(evacRoutes, {
-					style: evacStyle
-				}).addTo(map).bindPopup("Evacuation Routes"); 
+					style: evacStyle,
+					onEachFeature: function(feature, layer) {
+						layer.bindPopup('<h1>Jurisdiction: ' + feature.properties.PUB_SAFE + '</h1>');
+					},
+				}).addTo(map); 
 			});
 
 			map.on('click', function() {
