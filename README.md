@@ -1,2 +1,0 @@
-# csorgetoomey.github.io
-portfolio
