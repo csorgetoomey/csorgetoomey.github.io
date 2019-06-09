@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Campus Spaces</title>
+    <link rel="stylesheet" href="map.css" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel='stylesheet' href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.3/mapbox-gl.css" />
+</head>
+
+<body>
+    <div id="wrapper">
+	 <div id="map"></div>
+         <div id='legend'>
+	    <div><span style='background-color: #E6433B'></span>Study Space</div>
+	    <div><span style='background-color: #fae88b'></span>Social Space</div>
+	    <div><span style='background-color: #5EDB7E'></span>ADA Connecting Space</div>
+	    <div><span style='background-color: #036D81'></span>Green Space</div>
+	    <div><span style='background-color: #132438'></span>Diversity Space</div>
+
+	<!-- <div id="menu">
+            <h2>Campus Spaces</h2>
+            <p>University of Washington Seattle</p>
+            <p>Amy, Carey, Henry, Lindsey, Robert</p>
+        </div> -->
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/mapbox-gl-leaflet@0.0.3/leaflet-mapbox-gl.js"></script>
+    <script src="https://unpkg.com/@mapbox/leaflet-pip@latest/leaflet-pip.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.3/mapbox-gl.js'></script>
+
+    <script src="CAMPUS_GEOJSON_COMBINED.js"></script>
+    <script src="map.js"></script>
+
+</body>
+</html>
