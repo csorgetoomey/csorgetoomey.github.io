@@ -30,6 +30,10 @@
 		font-size: 20pt;
 	}
 
+	h3.center {
+		text-align: center;
+	}
+
 	h1,h2,h3,h4,h5,h6
 	{
 		letter-spacing: 1px;
@@ -109,7 +113,7 @@
 		{
 			display: block;
 			margin: 0.5em 0 0 0;
-			padding: 0 0 0.5em 0;
+			padding: 0 0 0em 0;
 			text-transform: uppercase;
 			font-size: 1.7em;
 		}
@@ -193,6 +197,12 @@
 				{
 					margin: 0 auto;
 					width: auto;
+				}
+
+				.center {
+				  display: block;
+				  margin-left: auto;
+				  margin-right: auto;
 				}
 
 	/* Lists */
